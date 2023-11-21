@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Formulário de Cadastro</title>
+  <style>
+    /* Estilos para a página com fundo preto e letras brancas */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #000;
+      color: #fff;
+    }
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    h1 {
+      text-align: center;
+    }
+    input[type="text"], input[type="number"] {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+    #captcha {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    #captcha img {
+      margin-right: 10px;
+      border: 2px solid #007bff;
+      border-radius: 5px;
+      padding: 3px;
+      background-color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Login de Acesso</h1>
+
+<form id="cadastroForm">
+  <input type="text" id="nome" placeholder="Nome" required><br>
+  <input type="number" id="peso" placeholder="Peso" required><br>
+  <input type="number" id="idade" placeholder="Idade" required><br>
+  <div id="captcha">
+    <img src="https://via.placeholder.com/100x50/007bff/ffffff?text=CAPTCHA" id="captchaImg" alt="Captcha">
+    <input type="text" id="captchaInput" placeholder="Digite o Captcha" required>
+  </div>
+  <button type="submit">Enviar</button>
+</form>
+
+<script>
+  // Função para gerar um código captcha aleatório
+  function generateCaptcha() {
+    let captcha = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+    for (let i = 0; i < 5; i++) {
+      captcha += characters.charAt(Math.floor(Math.random() * characters.length));
+    }
+
+    return captcha;
+  }
+
+  // Atualizar a imagem do captcha quando a página carregar
+  window.onload = function() {
+    const captcha = generateCaptcha();
+    const captchaImg = document.getElementById('captchaImg');
+    captchaImg.src = `https://via.placeholder.com/100x50/007bff/ffffff?text=${captcha}`;
+  };
+
+  // Verificar se o captcha inserido está correto ao enviar o formulário
+  document.getElementById('cadastroForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Impede o envio padrão do formulário
+
+    const captchaInput = document.getElementById('captchaInput').value;
+    const captchaImg = document.getElementById('captchaImg').src.split('?text=')[1];
+
+    if (captchaInput === captchaImg) {
+      // Captcha correto, processar os dados do formulário
+      const nome = document.getElementById('nome').value;
+      const peso = document.getElementById('peso').value;
+      const idade = document.getElementById('idade').value;
+
+      // Aqui você pode realizar ações com os dados submetidos, como enviar para um servidor ou exibir no console
+      console.log('Nome:', nome);
+      console.log('Peso:', peso);
+      console.log('Idade:', idade);
+
+      alert('Cadastro enviado com sucesso!');
+      document.getElementById('cadastroForm').reset(); // Limpa o formulário após o envio
+    } else {
+      // Captcha incorreto, pedir ao usuário para tentar novamente
+      alert('Captcha incorreto. Tente novamente.');
+    }
+  });
+  ('loginForm').addEventListener('submit', function(event) {
+  event.preventDefault(); // Impede o comportamento padrão do formulário
+
+  // Obtenção dos valores de usuário, idade e IMC
+  const username = document.getElementById('username').value;
+  const password = document.getElementById('password').value;
+  const idade = 25; // Idade obtida após o login
+  const imc = 22.5; // IMC obtido após o login
+
+  // Verificação de usuário e senha (simulação)
+  if (username === 'seu_usuario' && password === 'sua_senha') {
+    // Armazenamento das informações no localStorage
+    localStorage.setItem('username', username);
+    localStorage.setItem('idade', idade);
+    localStorage.setItem('imc', imc);
+
+    // Redirecionamento para a tela principal após login bem-sucedido
+    window.location.href = 'C:\Users\zedlo\OneDrive\Documentos\python\Trabalho de desv web\Main.html';
+  } else {
+    alert('Usuário ou senha inválidos. Tente novamente.'); // Exibe uma mensagem de erro
+  }
+});
+
+</script>
+
+</body>
+</html>

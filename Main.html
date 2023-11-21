@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculadora de Custo-Benefício de Planos de Saúde</title>
+  <link rel="stylesheet" href="C:\Users\zedlo\OneDrive\Documentos\python\Trabalho de desv web\Main.css">
+</head>
+<body>
+
+<div class="container">
+  <h2>Calculadora de Custo-Benefício de Planos de Saúde</h2>
+  
+  <div class="input-container">
+    <label for="idade">Idade:</label>
+    <input type="number" id="idade" placeholder="Idade">
+  </div>
+  
+  <div class="input-container">
+    <label for="imc">IMC (Índice de Massa Corporal):</label>
+    <input type="number" id="imc" placeholder="IMC">
+  </div>
+  
+  <h3>Operadora A:</h3>
+  
+  <p>Plano Básico: $<span id="precoBasico"></span></p>
+  <p>Plano Standard: $<span id="precoStandard"></span></p>
+  <p>Plano Premium: $<span id="precoPremium"></span></p>
+  
+  <h3>Operadora B:</h3>
+  <p>Plano Básico: $<span id="precoBasicoB"></span></p>
+  <p>Plano Standard: $<span id="precoStandardB"></span></p>
+  <p>Plano Premium: $<span id="precoPremiumB"></span></p>
+  
+  <!-- Container adicional para o botão -->
+  <div class="button-container">
+    <button onclick="calcularPrecos()">Calcular</button>
+  </div>
+  
+  <div id="resultado"></div>
+</div>
+
+<script src="C:\Users\zedlo\OneDrive\Documentos\python\Trabalho de desv web\Main.js"></script>
+</body>
+</html>
